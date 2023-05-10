@@ -1,0 +1,7 @@
+require("babel-register")
+require("./web/back")
+// require("./accounts/account")
+// require("./accounts/password")
+// require("./accounts/token")
+//require("./accounts/auth")
+// require("./register/register")

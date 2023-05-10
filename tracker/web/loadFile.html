@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link href="https://fonts.googleapis.com/css?family=Lobster+Two:700i" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" src="/dist/img/fogging_64x64.png">
+  <title>Tracker</title>
+  <!-- Tell the browser to be responsive to screen width -->
+ 
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href=" /bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href=" /bower_components/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href=" /dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href=" /dist/css/skins/_all-skins.min.css">
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+  <link rel="stylesheet" href="/dist/css/waterlevel.css">
+  <script type="text/javascript" src="//unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="#" class="logo" style="background-color: #199496;">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini" style="font-family: 'Comfortaa', cursive;"><small>Tracker</small></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg" style="font-family: 'Comfortaa', cursive;"><big><b>Tracker</b></big></span>
+      </a>
+
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top" style="background-color: #199496;">
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <li class="nav-item">
+              <a type="button" class="btn btn-outline-warning  btn-logout " href="/">
+                <i class="fa fa-fw fa-sign-out"></i>
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <aside class="main-sidebar">
+      <div class="anyClass" id="style-2">
+        <section class="sidebar">
+          <br />
+          <div class="user-panel" style="margin-top: 1rem">
+            <div class="pull-left image">
+              <img src="/dist/img/admin_128x128.png" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p id="username"></p>
+              <a><i class="fa fa-circle text-green"></i>&nbsp;<h0 style="font-size: medium;">Admin</h0></a>
+            </div>
+          </div>
+          <br />
+
+          <ul class="sidebar-menu" data-widget="tree" id="site-name-list">
+            <li class="header treeview">SITELIST</li>
+          </ul>
+
+          <ul class="sidebar-menu" data-widget="tree">
+            <li class="header treeview">MANAGE</li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-user"></i><span>Management</span>
+                <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+                <ul class="treeview-menu">
+                  <li><a href="#"><i class="fa fa-user-plus"></i><span> Create Account
+                      </span></a></li>
+                  <li><a href="#"><i class="fa fa-users"></i> <span>Users List</span></a>
+                  </li>
+                  <li><a href="#"><i class="fa fa-edit"></i> <span>Devices
+                        Registration</span></a></li>
+                  <li><a href="#"><i class=" fa fa-key"></i> <span>Change
+                        Password</span></a></li>
+                </ul>
+              </a>
+            </li>
+
+            <li class="header">MAIN NAVIGATION</li>
+            <li><a href="/dashboard" id="showMap"><i class="fa fa-map-marker"></i><span>Dashboard</span></a>
+            </li>
+            <li><a href="/loadFile" id="loadFile"><i class="fa fa-download"></i><span>Download File</span></a>
+            </li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </div>
+    </aside>
+
+    <div class="content-wrapper">
+      <div class="anyClass" id="style-1">
+        <div class="container-fluid">
+          <br />
+
+          <div class="row text-center">Select date</div><br />
+
+          <div class="row text-center"><input type="date" id="datemch"></div><br />
+
+          <div class="row text-center"><button type="button" class="btn" id="btnLoad" style="background-color: #109496; color: white;" >Download</button></div><br />
+
+          <div class="row text-center"><button type="button" class="btn" id="btnLoadWialon" style="background-color: #9ea5a5; color: white;" >Download Wialon</button></div><br />
+
+      </div>
+    </div>
+  </div>
+
+</body>
+<!-- jQuery 3 -->
+<script src=" /bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src=" /bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src=" /bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src=" /bower_components/moment/min/moment.min.js"></script>
+
+<!-- Bootstrap WYSIHTML5 -->
+<!-- <script src=" /plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script> -->
+<!-- Slimscroll -->
+<script src=" /bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src=" /bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src=" /dist/js/adminlte.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.5/require.min.js"></script>
+
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<script>
+
+
+function getSiteList() {
+    return new Promise(resolve => {
+      $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: "/readSiteName",
+        dataType: 'json',
+        success: function (dataw) {
+          // console.log(dataw)
+        
+          var sitename = "SITE"
+            var node = $('<li class="treeview"></li>')
+            var parent = $(`<a href="#">
+                                    <i class="fa fa-circle"></i>
+                                    <span>` + sitename + `</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>`);
+         var child = $('<ul class="treeview-menu lock"></ul>');
+          for (let i in dataw.msg) {
+             child.append($('<li><a href=" ' + '/map/' + dataw.msg[i].hereName + '"><i class="fa fa-circle text-green" id="alarm-online-' + dataw.msg[i].hereName + '"></i>' + dataw.msg[i].hereName + '</a></li>'));            
+            }
+            parent.appendTo(node);
+            child.appendTo(node);
+            node.appendTo("#site-name-list");
+          resolve()
+        }
+      });
+    });
+  }
+
+function getdata(){
+  console.log($("#datemch").val())
+  var formData1 = {
+      "date": $("#datemch").val(),
+  }
+  $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/loadFile",
+      data: JSON.stringify(formData1),
+      dataType: 'json',
+      success: function (dataw) {
+        if(dataw.length == 0){
+          alert("Not found.")
+        }else{
+          // console.log(dataw)
+          var createXLSLFormatObj = [];
+
+          /* XLS Head Columns */
+          var xlsHeader = ["id", "data", "createdAt"];
+
+          /* XLS Rows Data */
+          var xlsRows = dataw
+
+          createXLSLFormatObj.push(xlsHeader);
+          $.each(xlsRows, function(index, value) {
+              var innerRowData = [];
+              // console.log(value.createdAt)
+              $("tbody").append('<tr><td>' + value.id + '</td><td>' + value.data + '</td><td>' + value.createdAt + '</td></tr>');
+              $.each(value, function(ind, val) {
+                  innerRowData.push(val);
+              });
+              createXLSLFormatObj.push(innerRowData);
+          });
+
+
+          /* File Name */
+          var filename = "data.xlsx";
+
+          /* Sheet Name */
+          var ws_name = "sheet";
+
+          // if (typeof console !== 'undefined') console.log(new Date());
+          var wb = XLSX.utils.book_new(),
+              ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+          /* Add worksheet to workbook */
+          XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+          /* Write workbook and Download */
+          // if (typeof console !== 'undefined') console.log(new Date());
+          XLSX.writeFile(wb, filename);
+          // if (typeof console !== 'undefined') console.log(new Date());
+              }
+        }
+    });
+  }
+
+  function getdataWialon(){
+  console.log($("#datemch").val())
+  var formData2 = {
+      "date": $("#datemch").val(),
+  }
+  $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "/loadFileWialon",
+      data: JSON.stringify(formData2),
+      dataType: 'json',
+      success: function (dataw) {
+        if(dataw.length == 0){
+          alert("Not found.")
+        }else{
+          // console.log(dataw)
+          var createXLSLFormatObj = [];
+
+          /* XLS Head Columns */
+          var xlsHeader = ["id", "data", "createdAt"];
+
+          /* XLS Rows Data */
+          var xlsRows = dataw
+
+          createXLSLFormatObj.push(xlsHeader);
+          $.each(xlsRows, function(index, value) {
+              var innerRowData = [];
+              // console.log(value.createdAt)
+              $("tbody").append('<tr><td>' + value.id + '</td><td>' + value.data + '</td><td>' + value.createdAt + '</td></tr>');
+              $.each(value, function(ind, val) {
+                  innerRowData.push(val);
+              });
+              createXLSLFormatObj.push(innerRowData);
+          });
+
+
+          /* File Name */
+          var filename = "data.xlsx";
+
+          /* Sheet Name */
+          var ws_name = "sheet";
+
+          // if (typeof console !== 'undefined') console.log(new Date());
+          var wb = XLSX.utils.book_new(),
+              ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+          /* Add worksheet to workbook */
+          XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+          /* Write workbook and Download */
+          // if (typeof console !== 'undefined') console.log(new Date());
+          XLSX.writeFile(wb, filename);
+          // if (typeof console !== 'undefined') console.log(new Date());
+              }
+        }
+    });
+  }
+
+getSiteList();
+$("#btnLoad").click(function(){
+  getdata();
+});
+
+$("#btnLoadWialon").click(function(){
+  getdataWialon();
+});
+</script>
+
+</html>
