@@ -2,10 +2,10 @@
 /tracker
 tracker.zip
 
+tracker/node_modules/
+tracker/.env
+
 frontend/.env
 
 backend/node_modules/
 backend/.env
-
-tracker/node_modules/
-tracker/.env
