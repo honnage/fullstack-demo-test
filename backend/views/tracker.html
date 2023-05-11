@@ -29,17 +29,31 @@
 
     map.addControl(new mapboxgl.NavigationControl(), 'top-left'); // เพิ่มปุ่ม zoom in และ zoom out ด้านซ้ายบน
 
+    let deviceId = 'ALAP-TCP-1(957)'
+    let temperature = 30
+    let lat = '100.6060742686167'
+    let longi = '13.855035407124465'
 
     let marker1 = new mapboxgl.Marker()
     .setLngLat([100.5843378, 13.8767561])
-    .setPopup(new mapboxgl.Popup().setHTML("<b>Tracker</b><br>Sensor No.:ALAP-TCP-1(957)"))
+    .setPopup(new mapboxgl.Popup().setHTML(`<b>Tracker</b><br>Sensor No.: ${deviceId}<br>Temperature: ${temperature}`))
     .addTo(map);
 
 
     let marker2 = new mapboxgl.Marker({ color: 'black', rotation: 0 })
     .setLngLat([100.6060742686167, 13.855035407124465])
-    .setPopup(new mapboxgl.Popup().setHTML("<b>Tracker</b><br>Sensor No.:ALAP-TCP-1(957)"))
+    .setPopup(new mapboxgl.Popup().setHTML(`<b>Tracker</b><br>Sensor No.: ${deviceId}<br>Temperature: ${temperature}`))
     .addTo(map);
+
+
+    setInterval(function () {
+      console.log('reface')
+      // getLastData("ALAP-TCP-2(902)");
+      // getLastData("ALAP-TCP-1(957)");
+      // getLastData("ALAP-TCP-3(355)");
+      // getLastData("ALAP-TCP-4(027)");
+      // getLastData("867730051235566");
+    }, (60 * 1000));
   </script>
 </body>
 </html>
