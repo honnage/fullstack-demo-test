@@ -1,0 +1,14 @@
+* folder tracker เป็นคนตัวอย่าง
+
+คำสั่ง start project แบบทั้ง fronend กับ backend คือ
+npm run start
+
+
+คำสั่ง start frontend คือ
+npm run start:frontend
+
+
+คำสั่ง start backend คือ
+npm run start:backend
+
+
