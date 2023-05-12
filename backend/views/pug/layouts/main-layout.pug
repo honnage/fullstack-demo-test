@@ -8,19 +8,15 @@ html(lang="en")
         link(rel="stylesheet", href="/css/main.css")
         link(rel="stylesheet", href="/css/product.css")
         link(rel="stylesheet", href="/css/forms.css")
+        block styles
     body
         header.main-header
             nav.main-header-nav
                 ul.main-header-item-list
                     li.main-header-item
-                        a.active(href="/") Shop
+                        a(href="/", class=(path === '/' ? 'active' : '')) Shop
                     li.main-header-item
-                        a(href="/admin/add-product") Add Product
+                        a(href="/admin/add-product", class=(path === '/admin/add-product' ? 'active' : '')) Add Product
 
-        main
-            form.product-form(action="/admin/add-product", method="POST")
-                .form-control
-                    label(for="title") Title
-                    input(type="text", name="title")#title
+        block content
 
-                    button.btn(type='submin') Add Product

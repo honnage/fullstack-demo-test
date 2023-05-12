@@ -9,7 +9,7 @@ const trackerRouter = require('./routes/tracker')
 const app = express()
 
 app.set('view engine', 'pug')
-app.set('views', 'views')
+app.set('views', 'views/pug')
 
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'public')))
