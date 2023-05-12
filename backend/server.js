@@ -9,20 +9,22 @@ const trackerRouter = require('./routes/tracker')
 
 const app = express()
 
-app.engine(
-    'hbs',
-    expressHbs({
-        layoutsDir: 'views/handlebars/layouts/',
-        defaultLayout: 'main-layout',
-        extname: 'hbs'
-    })
-)
-
-app.set('view engine', 'hbs')
-app.set('views', 'views/handlebars')
+// app.engine(
+//     'hbs',
+//     expressHbs({
+//         layoutsDir: 'views/handlebars/layouts/',
+//         defaultLayout: 'main-layout',
+//         extname: 'hbs'
+//     })
+// )
+// app.set('view engine', 'hbs')
+// app.set('views', 'views/handlebars')
 
 // app.set('view engine', 'pug')
 // app.set('views', 'views/pug')
+
+app.set('view engine', 'ejs')
+app.set('views', 'views/ejs')
 
 
 app.use(bodyParser.urlencoded({extended: false}))
