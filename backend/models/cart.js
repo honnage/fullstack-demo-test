@@ -1,5 +1,5 @@
-const fs  = require('fs')
-const path = require('oath')
+const fs = require('fs')
+const path = require('path')
 
 const p = path.join(
     path.dirname(process.mainModule.filename),
@@ -8,32 +8,28 @@ const p = path.join(
 )
 
 module.exports = class Cart {
-    static addProdcut(id, prodcutPrice) {
+    static addProduct(id, productPrice) {
         fs.readFile(p, (err, fileContent) => {
             let cart = {
-                prodcuts: [],
-                totalPrice: 0
-            }
+                products: [],
+                totalPrice: 0 }
             if (!err) {
-                cart = JSON.stringify(fileContent)
+                cart = JSON.parse(fileContent)
             }
-            const existingProductIndex = cart.prodcuts.findIndex(prod => prod.id === id)
-            const existingProduct = cart.prodcuts[existingProductIndex]
-            let updateProdcut
-            if (existingProduct){
-                updateProdcut = { ...existingProduct }
-                updateProdcut.qty = updateProdcut.qty + 1
-                cart.prodcuts = [ ...cart.prodcuts ]
-                cart.prodcuts[existingProductIndex] = updateProdcut
+            const existingProductIndex = cart.products.findIndex( prod => prod.id === id)
+            const existingProduct = cart.products[existingProductIndex]
+            let updatedProduct
+            if (existingProduct) {
+                updatedProduct = { ...existingProduct }
+                updatedProduct.qty = updatedProduct.qty + 1
+                cart.products = [...cart.products]
+                cart.products[existingProductIndex] = updatedProduct
             } else {
-                updateProdcut = {
-                    id: id,
-                    qty: 1
-                }
-                cart.prodcuts = [...cart.prodcuts, updateProdcut]
+                updatedProduct = { id: id, qty: 1 }
+                cart.products = [...cart.products, updatedProduct]
             }
-            cart.totalPrice = cart.totalPrice + prodcutPrice
-            fs.writeFile(p, JSON.stringify(cart), (err) => {
+            cart.totalPrice = cart.totalPrice + +productPrice
+            fs.writeFile(p, JSON.stringify(cart), err => {
                 console.log(err)
             })
         })
